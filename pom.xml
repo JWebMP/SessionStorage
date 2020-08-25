@@ -1,0 +1,27 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.jwebmp.plugins.security</groupId>
+        <artifactId>jwebmp-plugins-security-parent</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+	
+    <artifactId>jwebmp-plugins-session-storage-security</artifactId>
+    <packaging>jar</packaging>
+
+    <name>JWebMP - Security - Session Storage</name>
+    <description>This plugin creates and transports variables containing local storage information.
+        It also creates unique identifier in the local storage for device identification.
+    </description>
+
+    <dependencies>
+        <dependency>
+          <groupId>com.jwebmp.plugins.security</groupId>
+             <artifactId>jwebmp-plugins-local-storage-security</artifactId>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>
