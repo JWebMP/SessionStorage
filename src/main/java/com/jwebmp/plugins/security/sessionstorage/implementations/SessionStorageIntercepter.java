@@ -46,7 +46,7 @@ public class SessionStorageIntercepter
 		{
 			AjaxCall<?> call = GuiceContext.get(AjaxCall.class);
 			SessionStorageProperties<?> storageProperties = GuiceContext.get(SessionStorageProperties.class);
-			Map<String, String> localStorage = storageProperties.getLocalStorage();
+			Map<String, String> localStorage = storageProperties.getSessionStorage();
 			if (call.getVariable(StaticStrings.SESSION_STORAGE_PARAMETER_KEY) != null
 					&& !localStorage.containsKey(StaticStrings.SESSION_STORAGE_PARAMETER_KEY))
 			{
