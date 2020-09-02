@@ -60,7 +60,7 @@ public class SessionStorageIntercepter
 		}
 		catch (Exception e)
 		{
-			SessionStorageIntercepter.log.log(Level.WARNING, "Unable to check for local storage key", e);
+			SessionStorageIntercepter.log.log(Level.WARNING, "Unable to check for session storage key", e);
 		}
 	}
 
