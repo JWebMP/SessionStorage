@@ -51,7 +51,6 @@ public class SessionStorageIntercepter
 					&& !localStorage.containsKey(StaticStrings.SESSION_STORAGE_PARAMETER_KEY))
 			{
 				ObjectMapper mapper = GuiceContext.get(ObjectMapper.class);
-				SessionStorageIntercepter.log.finer("Session Storage key found");
 				@SuppressWarnings("Convert2Diamond")
 				Map<String, String> result = mapper.readValue(call.getVariable(StaticStrings.SESSION_STORAGE_PARAMETER_KEY)
 				                                                  .getVariableText(), new TypeReference<Map<String, String>>() {});

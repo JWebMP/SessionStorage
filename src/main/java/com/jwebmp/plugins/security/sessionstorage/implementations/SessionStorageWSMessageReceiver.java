@@ -63,7 +63,7 @@ public class SessionStorageWSMessageReceiver
 						      .put("sessionkey", sessionUUID.toString());
 						GuicedWebSocket.broadcastMessage(sessionKey, newKey.toString());
 					}
-					SessionStorageWSMessageReceiver.log.log(Level.FINE, "Messaging web socket to session - " + sessionKey);
+					SessionStorageWSMessageReceiver.log.log(Level.FINER, "Messaging web socket to session - " + sessionKey);
 					GuicedWebSocket.getWebSocketSessionBindings()
 					               .put(sessionKey, session);
 				}
