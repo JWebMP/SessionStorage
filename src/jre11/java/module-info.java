@@ -11,7 +11,7 @@ module com.jwebmp.plugins.security.sessionstorage {
 	requires com.guicedee.guicedinjection;
 	requires com.jwebmp.interception;
 	requires com.guicedee.guicedservlets.websockets;
-	requires javax.websocket.api;
+	requires jakarta.websocket.api;
 
 	provides com.jwebmp.interception.services.DataCallIntercepter with SessionStorageIntercepter;
 	provides com.jwebmp.interception.services.AjaxCallIntercepter with SessionStorageIntercepter;

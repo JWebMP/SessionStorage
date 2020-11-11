@@ -6,7 +6,7 @@ import com.guicedee.guicedservlets.websockets.services.IWebSocketService;
 import com.guicedee.logger.LogFactory;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 
-import javax.websocket.Session;
+import jakarta.websocket.Session;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;

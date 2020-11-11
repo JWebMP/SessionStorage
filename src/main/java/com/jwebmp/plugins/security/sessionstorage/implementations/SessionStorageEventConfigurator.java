@@ -3,7 +3,7 @@ package com.jwebmp.plugins.security.sessionstorage.implementations;
 import com.jwebmp.core.Event;
 import com.jwebmp.core.events.IEventConfigurator;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 
