@@ -4,7 +4,7 @@ import com.jwebmp.plugins.security.sessionstorage.implementations.*;
 module com.jwebmp.plugins.security.sessionstorage {
 
 	requires com.jwebmp.core;
-	requires java.validation;
+	requires jakarta.validation;
 	requires com.google.guice;
 	requires com.fasterxml.jackson.databind;
 	requires com.google.guice.extensions.servlet;
