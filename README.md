@@ -1,1 +1,1 @@
-"# JWebMP-LocalStorageSecurity" 
+"# JWebMP-SessionStorageSecurity" 
