@@ -74,6 +74,7 @@ public class SessionStorageWSMessageReceiver
 							GuicedWebSocket.broadcastMessage(sessionKey, newKey.toString());
 						}
 						GuicedWebSocket.addToGroup(sessionUUID, session);
+						GuicedWebSocket.addWebsocketProperty(session, SESSION_STORAGE_PARAMETER_KEY, sessionUUID);
 						SessionStorageWSMessageReceiver.log.log(Level.FINER, "Messaging web socket to session - " + sessionKey);
 						GuicedWebSocket.getWebSocketSessionBindings()
 						               .put(sessionKey, session);
@@ -86,6 +87,7 @@ public class SessionStorageWSMessageReceiver
 						newKey.getSessionStorage()
 						      .put(SESSION_STORAGE_TAB_KEY, sessionUUID);
 						GuicedWebSocket.addToGroup(sessionUUID, session);
+						GuicedWebSocket.addWebsocketProperty(session, SESSION_STORAGE_PARAMETER_KEY, sessionUUID);
 						GuicedWebSocket.getWebSocketSessionBindings()
 						               .put(sessionUUID, session);
 						GuicedWebSocket.broadcastMessage(sessionUUID, newKey.toString());
