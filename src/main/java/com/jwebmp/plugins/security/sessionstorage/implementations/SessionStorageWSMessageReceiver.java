@@ -5,16 +5,13 @@ import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
 import com.guicedee.guicedservlets.websockets.services.IWebSocketService;
 import com.guicedee.logger.LogFactory;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-
-import com.jwebmp.core.utilities.StaticStrings;
 import jakarta.websocket.Session;
 
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.jwebmp.core.utilities.StaticStrings.SESSION_STORAGE_PARAMETER_KEY;
-import static com.jwebmp.core.utilities.StaticStrings.SESSION_STORAGE_TAB_KEY;
+import static com.jwebmp.core.utilities.StaticStrings.*;
 
 public class SessionStorageWSMessageReceiver
 		implements IWebSocketService
@@ -57,25 +54,26 @@ public class SessionStorageWSMessageReceiver
 					if (messageReceiver.getData() != null && messageReceiver.getData()
 					                                                        .containsKey(SESSION_STORAGE_PARAMETER_KEY))
 					{
-						String sessionKey = messageReceiver.getData()
-						                                   .get(SESSION_STORAGE_PARAMETER_KEY)
-						                                   .toString();
-						GuicedWebSocket.addToGroup(sessionKey, session);
-						String sessionUUID = messageReceiver.getData()
-						                                    .get(SESSION_STORAGE_TAB_KEY)
-						                                    .toString();
-						if (sessionUUID == null)
+						Object o = messageReceiver.getData()
+						                          .get(SESSION_STORAGE_PARAMETER_KEY);
+						String sessionKey = null;
+						if (o == null)
 						{
-							sessionUUID = UUID.randomUUID()
-							                  .toString();
+							sessionKey = UUID.randomUUID()
+							                 .toString();
 							AjaxResponse<?> newKey = new AjaxResponse<>();
 							newKey.getSessionStorage()
-							      .put(SESSION_STORAGE_TAB_KEY, sessionUUID);
+							      .put(SESSION_STORAGE_TAB_KEY, sessionKey);
 							GuicedWebSocket.broadcastMessage(sessionKey, newKey.toString());
 						}
-						GuicedWebSocket.addToGroup(sessionUUID, session);
-						GuicedWebSocket.addWebsocketProperty(session, SESSION_STORAGE_PARAMETER_KEY, sessionUUID);
+						else
+						{
+							sessionKey = o.toString();
+						}
+						GuicedWebSocket.addToGroup(sessionKey, session);
+						GuicedWebSocket.addWebsocketProperty(session, SESSION_STORAGE_PARAMETER_KEY, sessionKey);
 						SessionStorageWSMessageReceiver.log.log(Level.FINER, "Messaging web socket to session - " + sessionKey);
+						
 						GuicedWebSocket.getWebSocketSessionBindings()
 						               .put(sessionKey, session);
 					}

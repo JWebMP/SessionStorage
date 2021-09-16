@@ -12,7 +12,7 @@ public class SessionStorageEventConfigurator implements IEventConfigurator<Sessi
 	@Override
 	public @NotNull Event<?, ?> configureEvent(Event event)
 	{
-		event.returnVariable(SESSION_STORAGE_VARIABLE_KEY);
+		//event.returnVariable(SESSION_STORAGE_VARIABLE_KEY);
 		return event;
 	}
 }
