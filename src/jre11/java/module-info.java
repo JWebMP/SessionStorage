@@ -18,6 +18,8 @@ module com.jwebmp.plugins.security.sessionstorage {
 	provides com.guicedee.guicedservlets.websockets.services.IWebSocketService with SessionStorageWSMessageReceiver;
 //	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with SessionStorageInclusionModule;
 
+	exports com.jwebmp.plugins.security.sessionstorage.implementations;
 	opens com.jwebmp.plugins.security.sessionstorage.implementations to com.google.guice,com.fasterxml.jackson.databind;
+	exports com.jwebmp.plugins.security.sessionstorage;
 	opens com.jwebmp.plugins.security.sessionstorage to com.google.guice,com.fasterxml.jackson.databind;
 }
