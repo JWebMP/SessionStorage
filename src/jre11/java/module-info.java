@@ -1,3 +1,4 @@
+import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import com.jwebmp.plugins.security.sessionstorage.SessionStoragePageConfigurator;
 import com.jwebmp.plugins.security.sessionstorage.implementations.*;
 
@@ -17,7 +18,8 @@ module com.jwebmp.plugins.security.sessionstorage {
 	provides com.guicedee.guicedservlets.websockets.services.IWebSocketAuthDataProvider with SessionStorageKeyWSAuth;
 	provides com.guicedee.guicedservlets.websockets.services.IWebSocketService with SessionStorageWSMessageReceiver;
 //	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with SessionStorageInclusionModule;
-
+	provides IGuiceModule with SessionStorageSecurityBinder;
+	
 	exports com.jwebmp.plugins.security.sessionstorage.implementations;
 	opens com.jwebmp.plugins.security.sessionstorage.implementations to com.google.guice,com.fasterxml.jackson.databind;
 	exports com.jwebmp.plugins.security.sessionstorage;
