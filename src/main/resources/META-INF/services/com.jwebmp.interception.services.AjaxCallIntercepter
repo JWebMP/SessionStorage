@@ -1,1 +1,1 @@
-#com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageIntercepter
+com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageIntercepter
