@@ -11,7 +11,7 @@
 
     <artifactId>jwebmp-plugins-session-storage-security</artifactId>
     <packaging>jar</packaging>
-
+    <version>0.0.0_0-SNAPSHOT</version>
     <name>JWebMP - Security - Session Storage</name>
     <description>This plugin creates and transports variables containing local storage information.
         It also creates unique identifier in the local storage for device identification.
