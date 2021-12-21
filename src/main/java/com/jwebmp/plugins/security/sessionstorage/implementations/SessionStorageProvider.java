@@ -1,5 +1,6 @@
 package com.jwebmp.plugins.security.sessionstorage.implementations;
 
+import com.google.common.base.*;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
@@ -13,6 +14,11 @@ public class SessionStorageProvider implements Provider<UUID>
 	@Override
 	public UUID get()
 	{
-		return UUID.fromString(stringProvider.get());
+		String result = stringProvider.get();
+		if(Strings.isNullOrEmpty(result))
+		{
+			return null;
+		}
+		return UUID.fromString(result);
 	}
 }

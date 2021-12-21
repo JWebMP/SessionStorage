@@ -1,13 +1,12 @@
 package com.jwebmp.plugins.security.sessionstorage.implementations;
 
-import com.google.inject.Provider;
-import com.guicedee.guicedinjection.GuiceContext;
-import com.jwebmp.core.base.ajax.AjaxCall;
+import com.google.inject.*;
+import com.guicedee.guicedinjection.*;
+import com.jwebmp.core.base.ajax.*;
 
-import java.util.UUID;
+import java.util.*;
 
-import static com.jwebmp.core.htmlbuilder.javascript.events.enumerations.EventTypes.response;
-import static com.jwebmp.core.utilities.StaticStrings.SESSION_STORAGE_PARAMETER_KEY;
+import static com.jwebmp.core.utilities.StaticStrings.*;
 
 public class SessionStorageStringProvider implements Provider<String>
 {
@@ -20,7 +19,7 @@ public class SessionStorageStringProvider implements Provider<String>
 		if (call.getSessionStorage()
 		        .isEmpty())
 		{
-			uuid = UUID.randomUUID();
+			return null;
 		}
 		
 		if (call.getSessionStorage()
@@ -29,10 +28,8 @@ public class SessionStorageStringProvider implements Provider<String>
 			return call.getSessionStorage()
 			           .get(SESSION_STORAGE_PARAMETER_KEY);
 		}
-		if (uuid == null)
-		{
-			uuid = UUID.randomUUID();
-		}
+		
+		uuid = UUID.randomUUID();
 		call.getSessionStorage()
 		    .put(SESSION_STORAGE_PARAMETER_KEY, uuid.toString());
 		response.getSessionStorage()

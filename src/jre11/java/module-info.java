@@ -18,7 +18,7 @@ module com.jwebmp.plugins.security.sessionstorage {
 	provides com.jwebmp.interception.services.AjaxCallIntercepter with SessionStorageIntercepter;
 //	provides com.jwebmp.interception.services.DataCallIntercepter with SessionStorageIntercepter;
 	provides com.guicedee.guicedservlets.websockets.services.IWebSocketAuthDataProvider with SessionStorageKeyWSAuth;
-	provides com.guicedee.guicedservlets.websockets.services.IWebSocketService with SessionStorageWSMessageReceiver;
+	provides com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver with SessionStorageWSMessageReceiver;
 //	provides com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions with SessionStorageInclusionModule;
 	provides IGuiceModule with SessionStorageSecurityBinder;
 	

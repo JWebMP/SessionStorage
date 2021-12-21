@@ -42,7 +42,7 @@ public class SessionStorageIntercepter
 	@Override
 	public void intercept(AjaxCall<?> call, AjaxResponse<?> response)
 	{
-		try
+		/*try
 		{
 			Map<String, String> sessionStorage = call.getSessionStorage();
 			if (call.getVariable(StaticStrings.SESSION_STORAGE_PARAMETER_KEY) != null
@@ -60,7 +60,7 @@ public class SessionStorageIntercepter
 		catch (Exception e)
 		{
 			SessionStorageIntercepter.log.log(Level.WARNING, "Unable to check for session storage key", e);
-		}
+		}*/
 	}
 	
 	@Override
