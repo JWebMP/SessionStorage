@@ -1,6 +1,6 @@
 package com.jwebmp.plugins.security.sessionstorage.implementations;
 
-import com.guicedee.guicedservlets.websockets.services.IWebSocketAuthDataProvider;
+import com.guicedee.guicedservlets.websockets.services.*;
 
 public class SessionStorageKeyWSAuth
 		implements IWebSocketAuthDataProvider<SessionStorageKeyWSAuth>
@@ -8,18 +8,18 @@ public class SessionStorageKeyWSAuth
 	@Override
 	public StringBuilder getJavascriptToPopulate()
 	{
-		return new StringBuilder("jw.websocket.newMessage('SessionStorage'," +
-		                         "{'sessionid':jw.sessionstorage['sessionid']}" +
-		                         ");"
-		);
+		StringBuilder sb = new StringBuilder();
+		//sb.append("alert('sending local storage');" +
+		sb.append("this.send('SessionStorage',{},'sessionStorage');");
+		return sb;
 	}
-
+	
 	@Override
 	public String name()
 	{
 		return "SessionStorageWS";
 	}
-
+	
 	@Override
 	public boolean enabled()
 	{

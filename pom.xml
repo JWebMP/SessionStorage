@@ -17,17 +17,27 @@
         It also creates unique identifier in the local storage for device identification.
     </description>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.jwebmp.plugins.security</groupId>
-            <artifactId>jwebmp-plugins-local-storage-security</artifactId>
-        </dependency>
-    </dependencies>
-
     <properties>
         <ignore.moditect>true</ignore.moditect>
         <flatten.pom>false</flatten.pom>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jwebmp.core</groupId>
+            <artifactId>jwebmp-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.servlets</groupId>
+            <artifactId>guiced-servlets</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guicedee.servlets</groupId>
+            <artifactId>guiced-undertow</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>

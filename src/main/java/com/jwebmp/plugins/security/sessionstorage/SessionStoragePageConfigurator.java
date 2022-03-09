@@ -23,7 +23,7 @@ import jakarta.validation.constraints.NotNull;
 		pluginDownloadUrl = "https://mvnrepository.com/artifact/com.jwebmp.plugins.security/jwebmp-plugins-session-storage-security",
 		pluginIconUrl = "",
 		pluginIconImageUrl = "",
-		pluginLastUpdatedDate = "2020/12/14",
+		pluginLastUpdatedDate = "2022/03/07",
 		pluginGroupId = "com.jwebmp.plugins.security",
 		pluginArtifactId = "jwebmp-plugins-session-storage-security",
 		pluginModuleName = "com.jwebmp.plugins.security.sessionstorage",
