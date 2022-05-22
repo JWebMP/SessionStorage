@@ -37,6 +37,12 @@
             <groupId>com.guicedee.servlets</groupId>
             <artifactId>guiced-undertow</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp.plugins.angular</groupId>
+            <artifactId>angularts</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
