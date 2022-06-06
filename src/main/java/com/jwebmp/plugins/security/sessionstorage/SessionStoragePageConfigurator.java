@@ -2,7 +2,7 @@ package com.jwebmp.plugins.security.sessionstorage;
 
 import com.google.inject.Singleton;
 import com.jwebmp.core.Page;
-import com.jwebmp.core.base.angular.services.annotations.structures.*;
+import com.jwebmp.core.base.angular.client.annotations.boot.*;
 import com.jwebmp.core.plugins.PluginInformation;
 import com.jwebmp.core.plugins.PluginStatus;
 import com.jwebmp.core.services.IPageConfigurator;
