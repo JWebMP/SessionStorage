@@ -3,7 +3,7 @@ package com.jwebmp.plugins.security.sessionstorage.implementations;
 import com.guicedee.guicedservlets.websockets.*;
 import com.guicedee.guicedservlets.websockets.options.*;
 import com.guicedee.guicedservlets.websockets.services.*;
-import com.guicedee.logger.*;
+
 import com.jwebmp.core.base.ajax.*;
 
 import java.util.*;

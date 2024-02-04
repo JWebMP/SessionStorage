@@ -4,7 +4,7 @@ import com.google.inject.Key;
 import com.google.inject.PrivateModule;
 import com.google.inject.name.Names;
 import com.guicedee.guicedinjection.interfaces.IGuiceModule;
-import com.guicedee.guicedservlets.services.scopes.CallScope;
+import com.guicedee.guicedservlets.servlets.services.scopes.CallScope;
 
 import java.util.UUID;
 
