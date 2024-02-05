@@ -1,13 +1,16 @@
 import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import com.jwebmp.plugins.security.sessionstorage.SessionStoragePageConfigurator;
-import com.jwebmp.plugins.security.sessionstorage.implementations.*;
+import com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageSecurityBinder;
+import com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageWSMessageReceiver;
 
 module com.jwebmp.plugins.security.sessionstorage {
 	
 	requires transitive com.jwebmp.core.angular;
 	requires com.google.guice.extensions.servlet;
 	requires com.guicedee.guicedservlets.websockets;
-	requires jakarta.websocket.api;
+	requires jakarta.websocket;
+	requires jakarta.websocket.client;
+	requires static lombok;
 
 	provides com.jwebmp.core.services.IPageConfigurator with SessionStoragePageConfigurator;
 	provides com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver with SessionStorageWSMessageReceiver;

@@ -1,20 +1,24 @@
 package com.jwebmp.plugins.security.sessionstorage.implementations;
 
-import com.guicedee.guicedservlets.websockets.*;
-import com.guicedee.guicedservlets.websockets.options.*;
-import com.guicedee.guicedservlets.websockets.services.*;
+import com.guicedee.guicedservlets.websockets.GuicedWebSocket;
+import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
+import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
+import com.jwebmp.core.base.ajax.AjaxResponse;
+import lombok.extern.java.Log;
 
-import com.jwebmp.core.base.ajax.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.logging.Level;
 
-import java.util.*;
-import java.util.logging.*;
+import static com.jwebmp.core.utilities.StaticStrings.SESSION_STORAGE_PARAMETER_KEY;
+import static com.jwebmp.core.utilities.StaticStrings.SESSION_STORAGE_TAB_KEY;
 
-import static com.jwebmp.core.utilities.StaticStrings.*;
-
+@Log
 public class SessionStorageWSMessageReceiver
-		implements IWebSocketMessageReceiver
+				implements IWebSocketMessageReceiver
 {
-	private static final Logger log = LogFactory.getLog("SessionStorageWSReceiver");
 	
 	@Override
 	public Set<String> messageNames()
@@ -30,47 +34,50 @@ public class SessionStorageWSMessageReceiver
 		try
 		{
 			var session = messageReceiver.getSession();
-			if (messageReceiver.getData() != null && messageReceiver.getData()
-			                                                        .containsKey(SESSION_STORAGE_PARAMETER_KEY))
+			Map<String, Object> map = messageReceiver.getData();
+			boolean found = false;
+			if (map.containsKey("sessionStorage"))
 			{
-				Object o = messageReceiver.getData()
-				                          .get(SESSION_STORAGE_PARAMETER_KEY);
-				String sessionKey = null;
-				if (o == null)
+				Map<String, Object> localStorage = (Map<String, Object>) map.get("sessionStorage");
+				if (localStorage.containsKey(SESSION_STORAGE_PARAMETER_KEY))
 				{
-					sessionKey = UUID.randomUUID()
-					                 .toString();
-					AjaxResponse<?> newKey = new AjaxResponse<>();
-					newKey.getSessionStorage()
-					      .put(SESSION_STORAGE_TAB_KEY, sessionKey);
-					GuicedWebSocket.broadcastMessage(sessionKey, newKey.toString());
+					Object o = localStorage.get(SESSION_STORAGE_PARAMETER_KEY);
+					String sessionKey = null;
+					if (o == null)
+					{
+						sessionKey = UUID.randomUUID()
+										.toString();
+						AjaxResponse<?> newKey = new AjaxResponse<>();
+						newKey.getSessionStorage()
+										.put(SESSION_STORAGE_TAB_KEY, sessionKey);
+						GuicedWebSocket.broadcastMessage(sessionKey, newKey.toString());
+					} else
+					{
+						sessionKey = o.toString();
+					}
+					GuicedWebSocket.addToGroup(sessionKey, session);
+					GuicedWebSocket.addWebsocketProperty(session, SESSION_STORAGE_PARAMETER_KEY, sessionKey);
+					SessionStorageWSMessageReceiver.log.log(Level.FINER, "Messaging web socket to session - " + sessionKey);
+					GuicedWebSocket.getWebSocketSessionBindings()
+									.put(sessionKey, session);
+					found = true;
 				}
-				else
-				{
-					sessionKey = o.toString();
-				}
-				GuicedWebSocket.addToGroup(sessionKey, session);
-				GuicedWebSocket.addWebsocketProperty(session, SESSION_STORAGE_PARAMETER_KEY, sessionKey);
-				SessionStorageWSMessageReceiver.log.log(Level.FINER, "Messaging web socket to session - " + sessionKey);
-				
-				GuicedWebSocket.getWebSocketSessionBindings()
-				               .put(sessionKey, session);
 			}
-			else
+			
+			if (!found)
 			{
 				String sessionUUID = UUID.randomUUID()
-				                         .toString();
+								.toString();
 				AjaxResponse<?> newKey = new AjaxResponse<>();
 				newKey.getSessionStorage()
-				      .put(SESSION_STORAGE_TAB_KEY, sessionUUID);
+								.put(SESSION_STORAGE_TAB_KEY, sessionUUID);
 				GuicedWebSocket.addToGroup(sessionUUID, session);
 				GuicedWebSocket.addWebsocketProperty(session, SESSION_STORAGE_PARAMETER_KEY, sessionUUID);
 				GuicedWebSocket.getWebSocketSessionBindings()
-				               .put(sessionUUID, session);
+								.put(sessionUUID, session);
 				GuicedWebSocket.broadcastMessage(sessionUUID, newKey.toString());
 			}
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			SessionStorageWSMessageReceiver.log.log(Level.WARNING, "Unable to check for local storage key", e);
 		}
