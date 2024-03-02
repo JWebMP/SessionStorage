@@ -3,14 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.jwebmp</groupId>
-        <artifactId>jwebmp-builder</artifactId>
+        <artifactId>parent</artifactId>
         <version>2.0.0-SNAPSHOT</version>
-        <relativePath>../../../../</relativePath>
     </parent>
 
-    <groupId>com.jwebmp.plugins.security</groupId>
+    <groupId>com.jwebmp.plugins</groupId>
 
-    <artifactId>jwebmp-plugins-session-storage-security</artifactId>
+    <artifactId>sessionstorage</artifactId>
     <packaging>jar</packaging>
     <version>2.0.0-SNAPSHOT</version>
     <name>JWebMP - Security - Session Storage</name>
@@ -20,7 +19,7 @@
 
     <properties>
         <ignore.moditect>true</ignore.moditect>
-        <flatten.pom>false</flatten.pom>
+        <project.scm.nameUrl>/JWebMP/Plugins/SessionStorage</project.scm.nameUrl>
     </properties>
 
     <dependencies>
@@ -39,10 +38,12 @@
             <artifactId>guiced-undertow</artifactId>
         </dependency>
 
+
         <dependency>
-            <groupId>com.jwebmp.plugins.angular</groupId>
-            <artifactId>angularts</artifactId>
+            <groupId>com.jwebmp.plugins</groupId>
+            <artifactId>typescript-client</artifactId>
         </dependency>
+
 
     </dependencies>
 
