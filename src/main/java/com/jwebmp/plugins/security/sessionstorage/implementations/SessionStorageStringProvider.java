@@ -1,12 +1,12 @@
 package com.jwebmp.plugins.security.sessionstorage.implementations;
 
-import com.google.inject.*;
+import com.google.inject.Provider;
 import com.guicedee.client.IGuiceContext;
-import com.jwebmp.core.base.ajax.*;
+import com.jwebmp.core.base.ajax.AjaxCall;
 
-import java.util.*;
+import java.util.UUID;
 
-import static com.jwebmp.core.utilities.StaticStrings.*;
+import static com.jwebmp.interception.services.StaticStrings.SESSION_STORAGE_PARAMETER_KEY;
 
 public class SessionStorageStringProvider implements Provider<String>
 {
