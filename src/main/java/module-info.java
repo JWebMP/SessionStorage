@@ -8,7 +8,7 @@ module com.jwebmp.plugins.security.sessionstorage {
     requires transitive com.jwebmp.core.base.angular.client;
     requires com.jwebmp.client;
 
-    requires guiced.vertx.sockets;
+    requires com.guicedee.vertx.sockets;
     requires static lombok;
 
     provides com.jwebmp.core.services.IPageConfigurator with SessionStoragePageConfigurator;
