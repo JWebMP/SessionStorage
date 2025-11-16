@@ -21,7 +21,7 @@ import static com.jwebmp.interception.services.StaticStrings.SESSION_STORAGE_TAB
 
 @Log
 public class SessionStorageWSMessageReceiver
-        implements IWebSocketMessageReceiver
+        implements IWebSocketMessageReceiver<Void, SessionStorageWSMessageReceiver>
 {
 
     @Override
@@ -54,10 +54,13 @@ public class SessionStorageWSMessageReceiver
                                   String sessionKey = null;
                                   if (o == null)
                                   {
-                                      sessionKey = UUID.randomUUID().toString();
+                                      sessionKey = UUID.randomUUID()
+                                                       .toString();
                                       AjaxResponse<?> newKey = new AjaxResponse<>();
-                                      newKey.getSessionStorage().put(SESSION_STORAGE_TAB_KEY, sessionKey);
-                                      callScopeProperties.getProperties().put(SESSION_STORAGE_TAB_KEY, sessionKey);
+                                      newKey.getSessionStorage()
+                                            .put(SESSION_STORAGE_TAB_KEY, sessionKey);
+                                      callScopeProperties.getProperties()
+                                                         .put(SESSION_STORAGE_TAB_KEY, sessionKey);
                                       socket.broadcastMessage(sessionKey, newKey.toString());
                                   }
                                   else
@@ -72,10 +75,13 @@ public class SessionStorageWSMessageReceiver
 
                           if (!found)
                           {
-                              String sessionUUID = UUID.randomUUID().toString();
+                              String sessionUUID = UUID.randomUUID()
+                                                       .toString();
                               AjaxResponse<?> newKey = new AjaxResponse<>();
-                              newKey.getSessionStorage().put(SESSION_STORAGE_TAB_KEY, sessionUUID);
-                              callScopeProperties.getProperties().put(SESSION_STORAGE_TAB_KEY, sessionUUID);
+                              newKey.getSessionStorage()
+                                    .put(SESSION_STORAGE_TAB_KEY, sessionUUID);
+                              callScopeProperties.getProperties()
+                                                 .put(SESSION_STORAGE_TAB_KEY, sessionUUID);
                               socket.addToGroup(sessionUUID);
                               socket.broadcastMessage(sessionUUID, newKey.toString());
                           }
