@@ -3,8 +3,8 @@ package com.jwebmp.plugins.security.sessionstorage.implementations;
 import com.google.inject.Key;
 import com.google.inject.PrivateModule;
 import com.google.inject.name.Names;
-import com.guicedee.guicedinjection.interfaces.IGuiceModule;
-import com.guicedee.guicedservlets.servlets.services.scopes.CallScope;
+import com.guicedee.client.services.lifecycle.IGuiceModule;
+import com.guicedee.client.scopes.CallScope;
 
 import java.util.UUID;
 

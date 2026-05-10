@@ -1,11 +1,10 @@
 package com.jwebmp.plugins.security.sessionstorage.implementations;
 
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.client.CallScopeProperties;
-import com.guicedee.guicedservlets.websockets.options.IGuicedWebSocket;
-import com.guicedee.guicedservlets.websockets.options.WebSocketMessageReceiver;
-import com.guicedee.guicedservlets.websockets.services.IWebSocketMessageReceiver;
-import com.guicedee.vertx.websockets.GuicedWebSocket;
+import com.guicedee.client.scopes.CallScopeProperties;
+import com.guicedee.client.services.websocket.IGuicedWebSocket;
+import com.guicedee.client.services.websocket.WebSocketMessageReceiver;
+import com.guicedee.client.services.websocket.IWebSocketMessageReceiver;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import io.smallrye.mutiny.Uni;
 import lombok.extern.java.Log;
@@ -42,7 +41,7 @@ public class SessionStorageWSMessageReceiver
                       try
                       {
                           Map<String, Object> map = mr.getData();
-                          GuicedWebSocket socket = (GuicedWebSocket) IGuiceContext.get(IGuicedWebSocket.class);
+                          IGuicedWebSocket socket = IGuiceContext.get(IGuicedWebSocket.class);
                           boolean found = false;
                           CallScopeProperties callScopeProperties = IGuiceContext.get(CallScopeProperties.class);
                           if (map.containsKey("sessionStorage"))

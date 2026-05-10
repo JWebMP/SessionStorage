@@ -6,81 +6,51 @@
         <artifactId>parent</artifactId>
         <version>2.0.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.jwebmp.plugins</groupId>
-
     <artifactId>sessionstorage</artifactId>
     <packaging>jar</packaging>
     <version>2.0.0-SNAPSHOT</version>
-    <name>JWebMP - Security - Session Storage</name>
-    <description>This plugin creates and transports variables containing local storage information.
-        It also creates unique identifier in the local storage for device identification.
+    <name>Session Storage Security</name>
+    <description>This plugin creates and transports variables containing session storage information.
+        It also creates unique identifiers in the session storage for per-tab device identification.
     </description>
-
-    <properties>
-        <ignore.moditect>true</ignore.moditect>
-        <project.scm.nameUrl>/JWebMP/Plugins/SessionStorage</project.scm.nameUrl>
-    </properties>
-
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/JWebMP/SessionStorage/issues</url>
+    </issueManagement>
     <dependencies>
-
         <dependency>
-            <groupId>com.jwebmp.client</groupId>
-            <artifactId>jwebmp-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.guicedee</groupId>
-            <artifactId>guiced-vertx-sockets</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins</groupId>
             <artifactId>typescript-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.jwebmp.core</groupId>
-            <artifactId>jwebmp-testlib</artifactId>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-vertx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>standalone-bom</artifactId>
-                <type>pom</type>
-                <scope>import</scope>
-                <version>${guicedee.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.guicedee</groupId>
-                <artifactId>fasterxml-bom</artifactId>
-                <type>pom</type>
-                <scope>import</scope>
-                <version>${guicedee.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.jwebmp</groupId>
-                <artifactId>jwebmp-bom</artifactId>
-                <type>pom</type>
-                <scope>import</scope>
-                <version>${guicedee.version}</version>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
-
+    <properties>
+        <ignore.moditect>true</ignore.moditect>
+        <project.scm.nameUrl>/JWebMP/Plugins/SessionStorage</project.scm.nameUrl>
+    </properties>
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
-
 </project>
