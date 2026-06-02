@@ -18,7 +18,7 @@ Built on JWebMP · [JWebMP Core](https://jwebmp.com/) · JPMS module `com.jwebmp
 <dependency>
   <groupId>com.jwebmp.plugins</groupId>
   <artifactId>sessionstorage</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
+  <version>2.0.3-SNAPSHOT</version>
 </dependency>
 ```
 
