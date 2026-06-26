@@ -18,7 +18,7 @@ module com.jwebmp.plugins.security.sessionstorage {
     provides com.guicedee.client.services.config.IGuiceScanModuleInclusions with SessionStorageInclusionModule;
 
     exports com.jwebmp.plugins.security.sessionstorage.implementations;
-    opens com.jwebmp.plugins.security.sessionstorage.implementations to com.google.guice, com.fasterxml.jackson.databind, com.jwebmp.core, com.jwebmp.core.angular;
+    opens com.jwebmp.plugins.security.sessionstorage.implementations to com.google.guice, tools.jackson.databind, com.jwebmp.core, com.jwebmp.core.angular;
     exports com.jwebmp.plugins.security.sessionstorage;
-    opens com.jwebmp.plugins.security.sessionstorage to com.google.guice, com.fasterxml.jackson.databind, com.jwebmp.core, com.jwebmp.core.angular;
+    opens com.jwebmp.plugins.security.sessionstorage to com.google.guice, tools.jackson.databind, com.jwebmp.core, com.jwebmp.core.angular;
 }
