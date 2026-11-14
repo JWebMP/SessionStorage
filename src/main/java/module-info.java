@@ -1,8 +1,6 @@
 import com.jwebmp.plugins.security.sessionstorage.SessionStoragePageConfigurator;
 import com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageSecurityBinder;
 import com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageWSMessageReceiver;
-import com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageInclusionModule;
-
 module com.jwebmp.plugins.security.sessionstorage {
 
     requires transitive com.jwebmp.core.base.angular.client;
@@ -15,10 +13,13 @@ module com.jwebmp.plugins.security.sessionstorage {
     provides com.jwebmp.core.services.IPageConfigurator with SessionStoragePageConfigurator;
     provides com.guicedee.client.services.websocket.IWebSocketMessageReceiver with SessionStorageWSMessageReceiver;
     provides com.guicedee.client.services.lifecycle.IGuiceModule with SessionStorageSecurityBinder;
-    provides com.guicedee.client.services.config.IGuiceScanModuleInclusions with SessionStorageInclusionModule;
 
     exports com.jwebmp.plugins.security.sessionstorage.implementations;
     opens com.jwebmp.plugins.security.sessionstorage.implementations to com.google.guice, tools.jackson.databind, com.jwebmp.core, com.jwebmp.core.angular;
     exports com.jwebmp.plugins.security.sessionstorage;
     opens com.jwebmp.plugins.security.sessionstorage to com.google.guice, tools.jackson.databind, com.jwebmp.core, com.jwebmp.core.angular;
+
+    provides com.guicedee.client.services.config.IGuiceScanModuleExclusions with com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageExclusionModule;
+
+    provides com.guicedee.client.services.config.IGuiceScanJarExclusions with com.jwebmp.plugins.security.sessionstorage.implementations.SessionStorageExclusionModule;
 }
